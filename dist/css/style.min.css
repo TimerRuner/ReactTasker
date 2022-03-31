@@ -1,0 +1,373 @@
+@font-face {
+  font-family: Roboto;
+  font-display: swap;
+  src: url("../fonts/Roboto-Bold.woff2") format("woff2"), url("../fonts/Roboto-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: Roboto;
+  font-display: swap;
+  src: url("../fonts/Roboto-Light.woff2") format("woff2"), url("../fonts/Roboto-Light.woff") format("woff");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: Roboto;
+  font-display: swap;
+  src: url("../fonts/Roboto-Regular.woff2") format("woff2"), url("../fonts/Roboto-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+body {
+  font-family: Roboto;
+}
+
+.Layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.Layout main {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.Layout main > div {
+  padding: 100px 0 0 0;
+}
+
+.Quiz {
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+  flex-grow: 1;
+  width: 100%;
+  background: linear-gradient(90deg, #5041b2 0%, #7969e6 100%);
+}
+.Quiz__wrapper {
+  flex: 0 1 600px;
+}
+.Quiz h1 {
+  font-weight: 900;
+  color: #fff;
+  margin-left: 10px;
+}
+
+.ActiveQuiz {
+  padding: 20px;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  margin: 0 10px;
+  box-sizing: border-box;
+}
+
+.Question {
+  display: flex;
+  justify-content: space-between;
+}
+
+.AnswersList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.AnswerItem {
+  border: 1px solid #fff;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 0 0 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  background-color: transparent;
+}
+.AnswerItem:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.AnswerItem.success {
+  background-color: rgba(161, 240, 69, 0.7);
+}
+.AnswerItem.error {
+  background-color: rgba(240, 87, 108, 0.7);
+}
+
+.FinishedQuiz {
+  padding: 20px;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin: 0 10px;
+}
+.FinishedQuiz ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.FinishedQuiz ul li i {
+  margin: 0 0 0 10px;
+}
+.FinishedQuiz ul li i.success {
+  color: rgba(161, 240, 69, 0.7);
+}
+.FinishedQuiz ul li i.error {
+  color: rgba(240, 87, 108, 0.7);
+}
+
+.Button {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  color: #000;
+  margin-right: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+}
+.Button.error {
+  background-color: #f0576c;
+}
+.Button.success {
+  background-color: #a1f045;
+}
+.Button.primary {
+  background-color: #2884f6;
+  color: #fff;
+}
+.Button:focus {
+  outline: none;
+}
+.Button:active {
+  box-shadow: inset 2px 2px 1px rgba(0, 0, 0, 0.3);
+}
+.Button:disabled {
+  background-color: #ccc;
+  color: #fff;
+  cursor: not-allowed;
+}
+
+.MenuToggle {
+  position: fixed;
+  top: 40px;
+  left: 40px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #fff;
+  transition: opacity, left 0.22s ease-in;
+  z-index: 100;
+}
+.MenuToggle:hover {
+  opacity: 0.7;
+}
+.MenuToggle.open {
+  left: 320px;
+}
+
+.Drawer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 80%;
+  max-width: 300px;
+  padding: 20px 10px;
+  box-sizing: border-box;
+  background: #fff;
+  z-index: 90;
+  transform: translateX(0px);
+  transition: transform 0.22s ease-in;
+}
+.Drawer.close {
+  transform: translateX(-300px);
+}
+.Drawer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.Drawer ul li {
+  margin-bottom: 15px;
+}
+.Drawer ul li a {
+  color: #363f54;
+  font-size: 30px;
+  text-decoration: none;
+  background-color: #fff;
+  position: relative;
+  padding: 0 20px 10px 20px;
+  transition: opacity 0.3s ease-in;
+}
+.Drawer ul li a:hover, .Drawer ul li a.active {
+  opacity: 0.7;
+}
+
+.Backdrop {
+  z-index: 50;
+  background: rgba(0, 0, 0, 0.7);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+}
+
+.QuizList {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  width: 100%;
+  background: linear-gradient(90deg, #fd8355 0%, #f0576c 37%, #f79cbd 100%);
+}
+.QuizList h1 {
+  color: #fff;
+}
+.QuizList ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.QuizList ul li {
+  margin: 0 0 10px 0;
+}
+.QuizList ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+.QuizList ul li a:hover {
+  color: #365436;
+}
+
+.Auth {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  width: 100%;
+  background: linear-gradient(270deg, #cef2fa 0%, #59bfef 100%);
+}
+.Auth > div {
+  width: 100%;
+  max-width: 600px;
+  padding: 0 20px;
+}
+.Auth h1 {
+  color: #fff;
+}
+.Auth .AuthForm {
+  background-color: #eee;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.Input {
+  margin-bottom: 15px;
+}
+.Input label {
+  margin: 0 0 3px 0;
+  padding: 0;
+  display: block;
+  font-weight: bold;
+}
+.Input input {
+  display: block;
+  box-sizing: border-box;
+  border: 1px solid #bebebe;
+  padding: 7px;
+  margin: 0 0 5px;
+  width: 100%;
+  outline: none;
+  transition: all 300ms ease-in-out;
+}
+.Input span {
+  font-size: 12px;
+  font-weight: bold;
+  color: #f01f30;
+}
+.Input.invalid label {
+  color: #f01f30;
+}
+
+.QuizCreator {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  width: 100%;
+  background: linear-gradient(270deg, #f0613c 0%, #f0783c 100%);
+}
+.QuizCreator > div {
+  width: 100%;
+  max-width: 600px;
+  padding: 0 20px;
+}
+.QuizCreator h1 {
+  text-align: center;
+}
+.QuizCreator form {
+  background: #eee;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+}
+
+.Select {
+  margin-bottom: 15px;
+}
+.Select label {
+  margin: 0 0 3px 0;
+  padding: 0;
+  font-weight: bold;
+  display: block;
+}
+.Select select {
+  display: block;
+  box-sizing: border-box;
+  border: 1px solid #bebebe;
+  margin: 0 0 5px;
+  height: 29px;
+  width: 100%;
+  outline: none;
+  transition: all 300ms ease-in;
+}
+
+.Loader {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+
+.Loader div {
+  position: absolute;
+  border: 4px solid #fff;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+.Loader div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+
+.center {
+  text-align: center;
+}
+
+@keyframes lds-ripple {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
+}
